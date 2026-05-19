@@ -2,6 +2,10 @@
 
 Personal Fedora COSMIC Atomic image. `mise` is layered; everything else lives in [justyn/dotfiles](https://github.com/justyn/dotfiles) and [justyn/nvim-config](https://github.com/justyn/nvim-config), cloned automatically by chezmoi on first login.
 
+## Keyboard
+
+Default layout is `jb` — UK Dvorak with Caps Lock as Backspace and a few key remaps (`files/scripts/install-jb-xkb.sh`). `gb` (UK QWERTY) is configured as a second input source so the COSMIC top-bar picker can switch between them.
+
 ## Rebase
 
 ```sh
