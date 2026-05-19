@@ -1,8 +1,8 @@
 (
     rules: "",
     model: "",
-    layout: "jb",
-    variant: "",
+    layout: "jb,gb",
+    variant: ",",
     options: None,
     repeat_delay: 600,
     repeat_rate: 25,

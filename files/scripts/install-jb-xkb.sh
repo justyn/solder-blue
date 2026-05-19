@@ -21,3 +21,21 @@ xkb_symbols "jb" {
 };
 XKBEOF
 chmod 0644 "$xkb_dir/symbols/jb"
+
+evdev="$xkb_dir/rules/evdev.xml"
+awk '
+/<\/layoutList>/ {
+  print "    <layout>"
+  print "      <configItem>"
+  print "        <name>jb</name>"
+  print "        <shortDescription>jb</shortDescription>"
+  print "        <description>UK Dvorak with JB customisations</description>"
+  print "        <languageList><iso639Id>eng</iso639Id></languageList>"
+  print "      </configItem>"
+  print "      <variantList/>"
+  print "    </layout>"
+}
+{ print }
+' "$evdev" > "$evdev.new"
+mv "$evdev.new" "$evdev"
+chmod 0644 "$evdev"
