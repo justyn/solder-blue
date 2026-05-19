@@ -1,3 +1,9 @@
+#!/usr/bin/env bash
+set -oue pipefail
+
+xkb_dir=$(readlink -f /usr/share/X11/xkb)
+install -d -m 0755 "$xkb_dir/symbols"
+cat > "$xkb_dir/symbols/jb" <<'XKBEOF'
 default partial alphanumeric_keys
 xkb_symbols "jb" {
 
@@ -13,3 +19,5 @@ xkb_symbols "jb" {
    key <AE11> { [ numbersign,   asciitilde, dead_grave, dead_breve     ] };
    key <BKSL> { [ slash,        question                               ] };
 };
+XKBEOF
+chmod 0644 "$xkb_dir/symbols/jb"
