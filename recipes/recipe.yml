@@ -6,8 +6,8 @@ name: solder-blue
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/blue-build/base-images/fedora-cosmic
+image-version: 44 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -18,13 +18,6 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
-    repos:
-      copr:
-        - atim/starship
-    install:
-      packages:
-        - micro
-        - starship
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -41,5 +34,16 @@ modules:
           - org.mozilla.firefox
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
+
+  - type: fonts
+    fonts:
+      url-fonts:
+        - name: MapleMono-NF
+          url: https://github.com/subframe7536/maple-font/releases/latest/download/MapleMono-NF.zip
+
+  - type: chezmoi
+    repository: https://github.com/justyn/dotfiles
+    branch: main
+    file-conflict-policy: replace
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
