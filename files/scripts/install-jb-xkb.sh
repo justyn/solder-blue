@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-set -oue pipefail
+set -euo pipefail
 
 xkb_dir=$(readlink -f /usr/share/X11/xkb)
-install -d -m 0755 "$xkb_dir/symbols"
 cat > "$xkb_dir/symbols/jb" <<'XKBEOF'
 default partial alphanumeric_keys
 xkb_symbols "jb" {
@@ -20,22 +19,22 @@ xkb_symbols "jb" {
    key <BKSL> { [ slash,        question                               ] };
 };
 XKBEOF
-chmod 0644 "$xkb_dir/symbols/jb"
 
 evdev="$xkb_dir/rules/evdev.xml"
-awk '
-/<\/layoutList>/ {
-  print "    <layout>"
-  print "      <configItem>"
-  print "        <name>jb</name>"
-  print "        <shortDescription>jb</shortDescription>"
-  print "        <description>UK Dvorak with JB customisations</description>"
-  print "        <languageList><iso639Id>eng</iso639Id></languageList>"
-  print "      </configItem>"
-  print "      <variantList/>"
-  print "    </layout>"
-}
-{ print }
-' "$evdev" > "$evdev.new"
-mv "$evdev.new" "$evdev"
-chmod 0644 "$evdev"
+if ! grep -qF 'UK Dvorak with JB customisations' "$evdev"; then
+  awk '
+  /<\/layoutList>/ {
+    print "    <layout>"
+    print "      <configItem>"
+    print "        <name>jb</name>"
+    print "        <shortDescription>jb</shortDescription>"
+    print "        <description>UK Dvorak with JB customisations</description>"
+    print "        <languageList><iso639Id>eng</iso639Id></languageList>"
+    print "      </configItem>"
+    print "      <variantList/>"
+    print "    </layout>"
+  }
+  { print }
+  ' "$evdev" > "$evdev.new"
+  mv "$evdev.new" "$evdev"
+fi
