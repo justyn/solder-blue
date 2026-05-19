@@ -1,6 +1,6 @@
 # solder-blue
 
-Personal Fedora COSMIC Atomic image, built with BlueBuild.
+Personal Fedora COSMIC Atomic image. `mise` is layered; everything else lives in [justyn/dotfiles](https://github.com/justyn/dotfiles) and [justyn/nvim-config](https://github.com/justyn/nvim-config), cloned automatically by chezmoi on first login.
 
 ## Rebase
 
@@ -12,6 +12,13 @@ systemctl reboot
 ```
 
 The first rebase installs cosign keys; the second pins to the signed image.
+
+## Update
+
+```sh
+chezmoi update   # pull dotfiles, re-apply, re-run mise install if config changed
+mise upgrade     # bump tool versions
+```
 
 ## Verify
 
