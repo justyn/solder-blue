@@ -57,6 +57,7 @@ modules:
           - com.discordapp.Discord
           - org.signal.Signal
           - md.obsidian.Obsidian
+          - org.libreoffice.LibreOffice
       - scope: user
 
   - type: fonts
