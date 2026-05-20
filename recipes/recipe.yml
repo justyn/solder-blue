@@ -32,6 +32,9 @@ modules:
         - mise
         - tailscale
         - kitty
+        - gcc
+        - gcc-c++
+        - make
     remove:
       packages:
         - firefox
