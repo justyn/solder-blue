@@ -31,6 +31,7 @@ modules:
       packages:
         - mise
         - tailscale
+        - kitty
     remove:
       packages:
         - firefox
