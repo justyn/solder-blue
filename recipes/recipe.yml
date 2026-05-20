@@ -49,6 +49,9 @@ modules:
           - org.mozilla.firefox
           - org.gnome.Loupe
           - com.brave.Browser
+          - com.slack.Slack
+          - com.discordapp.Discord
+          - org.signal.Signal
       - scope: user
 
   - type: fonts
