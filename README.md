@@ -24,6 +24,10 @@ chezmoi update   # pull dotfiles, re-apply, re-run mise install if config change
 mise upgrade     # bump tool versions
 ```
 
+## Printers
+
+Brother HL-3070CW is pre-defined as a CUPS queue (`files/system/etc/cups/printers.conf` + a symlink under `files/system/etc/cups/ppd/`). The queue uses the cups-filters `pxlcolor` PPD (PCL XL via Ghostscript's `gstopxl`) — Brother's BR-Script3 PPD that auto-discovery picks otherwise hits `limitcheck` on this model's 21 MB free RAM and prints blank pages or PS error pages. The device URI is the mDNS form, so it works on any LAN where the printer broadcasts.
+
 ## Verify
 
 ```sh
