@@ -36,6 +36,8 @@ modules:
         - gcc
         - gcc-c++
         - make
+        - seafile-client
+        - seafile
     remove:
       packages:
         - firefox
