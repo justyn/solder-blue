@@ -58,6 +58,7 @@ modules:
           - org.signal.Signal
           - md.obsidian.Obsidian
           - org.libreoffice.LibreOffice
+          - it.mijorus.gearlever
       - scope: user
 
   - type: fonts
